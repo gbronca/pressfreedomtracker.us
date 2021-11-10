@@ -21,13 +21,15 @@ from incident.tests.factories import (
 
 
 class JournalistAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         cls.journalist = factories.JournalistFactory()
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('journalist-list'),
+            reverse('journalist-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -35,7 +37,7 @@ class JournalistAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('journalist-detail', args=(self.journalist.pk,)),
+            reverse('journalist-detail', args=(self.version, self.journalist.pk)),
             HTTP_ACCEPT='application/json',
         )
 
@@ -43,7 +45,7 @@ class JournalistAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('journalist-list'),
+            reverse('journalist-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -54,13 +56,15 @@ class JournalistAPITest(APITestCase):
 
 
 class InstitutionAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         cls.institution = factories.InstitutionFactory()
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('institution-list'),
+            reverse('institution-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -68,7 +72,7 @@ class InstitutionAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('institution-detail', args=(self.institution.pk,)),
+            reverse('institution-detail', args=(self.version, self.institution.pk)),
             HTTP_ACCEPT='application/json',
         )
 
@@ -76,7 +80,7 @@ class InstitutionAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('institution-list'),
+            reverse('institution-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -87,13 +91,15 @@ class InstitutionAPITest(APITestCase):
 
 
 class GovernmentWorkerAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         cls.worker = factories.GovernmentWorkerFactory()
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('governmentworker-list'),
+            reverse('governmentworker-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -101,7 +107,7 @@ class GovernmentWorkerAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('governmentworker-detail', args=(self.worker.pk,)),
+            reverse('governmentworker-detail', args=(self.version, self.worker.pk)),
             HTTP_ACCEPT='application/json',
         )
 
@@ -109,7 +115,7 @@ class GovernmentWorkerAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('governmentworker-list'),
+            reverse('governmentworker-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -120,13 +126,15 @@ class GovernmentWorkerAPITest(APITestCase):
 
 
 class ChargeAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         cls.charge = factories.ChargeFactory()
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('charge-list'),
+            reverse('charge-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -134,7 +142,7 @@ class ChargeAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('charge-detail', args=(self.charge.pk,)),
+            reverse('charge-detail', args=(self.version, self.charge.pk)),
             HTTP_ACCEPT='application/json',
         )
 
@@ -142,7 +150,7 @@ class ChargeAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('charge-list'),
+            reverse('charge-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -153,13 +161,15 @@ class ChargeAPITest(APITestCase):
 
 
 class NationalityAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         cls.nationality = factories.NationalityFactory()
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('nationality-list'),
+            reverse('nationality-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -167,7 +177,7 @@ class NationalityAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('nationality-detail', args=(self.nationality.pk,)),
+            reverse('nationality-detail', args=(self.version, self.nationality.pk)),
             HTTP_ACCEPT='application/json',
         )
 
@@ -175,7 +185,7 @@ class NationalityAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('nationality-list'),
+            reverse('nationality-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -186,13 +196,15 @@ class NationalityAPITest(APITestCase):
 
 
 class PoliticianAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         cls.politician = factories.PoliticianOrPublicFactory()
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('politicianorpublic-list'),
+            reverse('politicianorpublic-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -200,7 +212,7 @@ class PoliticianAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('politicianorpublic-detail', args=(self.politician.pk,)),
+            reverse('politicianorpublic-detail', args=(self.version, self.politician.pk,)),
             HTTP_ACCEPT='application/json',
         )
 
@@ -208,7 +220,7 @@ class PoliticianAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('politicianorpublic-list'),
+            reverse('politicianorpublic-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -219,13 +231,15 @@ class PoliticianAPITest(APITestCase):
 
 
 class VenueAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         cls.venue = factories.VenueFactory()
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('venue-list'),
+            reverse('venue-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -233,7 +247,10 @@ class VenueAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('venue-detail', args=(self.venue.pk,)),
+            reverse(
+                'venue-detail',
+                args=(self.version, self.venue.pk),
+            ),
             HTTP_ACCEPT='application/json',
         )
 
@@ -241,7 +258,7 @@ class VenueAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('venue-list'),
+            reverse('venue-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -252,13 +269,15 @@ class VenueAPITest(APITestCase):
 
 
 class EquipmentAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         cls.equipment = factories.EquipmentFactory()
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('equipment-list'),
+            reverse('equipment-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -266,7 +285,7 @@ class EquipmentAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('equipment-detail', args=(self.equipment.pk,)),
+            reverse('equipment-detail', args=(self.version, self.equipment.pk)),
             HTTP_ACCEPT='application/json',
         )
 
@@ -274,7 +293,7 @@ class EquipmentAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('equipment-list'),
+            reverse('equipment-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -285,6 +304,8 @@ class EquipmentAPITest(APITestCase):
 
 
 class CategoryAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         site = Site.objects.get(is_default_site=True)
@@ -296,7 +317,7 @@ class CategoryAPITest(APITestCase):
 
     def test_list_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('category-list'),
+            reverse('category-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -304,7 +325,10 @@ class CategoryAPITest(APITestCase):
 
     def test_retrieve_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('category-detail', args=(self.category.pk,)),
+            reverse(
+                'category-detail',
+                args=(self.version, self.category.pk),
+            ),
             HTTP_ACCEPT='application/json',
         )
 
@@ -312,7 +336,7 @@ class CategoryAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('category-list'),
+            reverse('category-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -328,6 +352,8 @@ class CategoryAPITest(APITestCase):
 
 
 class IncidentAPITest(APITestCase):
+    version = 'edge'
+
     @classmethod
     def setUpTestData(cls):
         site = Site.objects.get(is_default_site=True)
@@ -376,7 +402,7 @@ class IncidentAPITest(APITestCase):
 
     def test_api_requests_are_successful(self):
         response = self.client.get(
-            reverse('incidentpage-list'),
+            reverse('incidentpage-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
 
@@ -384,7 +410,7 @@ class IncidentAPITest(APITestCase):
 
     def test_result_attributes(self):
         response = self.client.get(
-            reverse('incidentpage-list'),
+            reverse('incidentpage-list', kwargs={'version': self.version}),
             HTTP_ACCEPT='application/json',
         )
         data = response.json()[0]
@@ -466,7 +492,7 @@ class IncidentAPITest(APITestCase):
             categories=[self.cat2],
         )
         response = self.client.get(
-            reverse('incidentpage-list'),
+            reverse('incidentpage-list', kwargs={'version': self.version}),
             {'categories': str(self.cat1.pk)},
             HTTP_ACCEPT='application/json',
         )
@@ -475,7 +501,7 @@ class IncidentAPITest(APITestCase):
 
     def test_dynamic_fields(self):
         response = self.client.get(
-            reverse('incidentpage-list'),
+            reverse('incidentpage-list', kwargs={'version': self.version}),
             {'fields': 'city,state'},
             HTTP_ACCEPT='application/json',
         )

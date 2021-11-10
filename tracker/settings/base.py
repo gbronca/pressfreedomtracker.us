@@ -344,11 +344,12 @@ RANDOM_SEED = 876394101
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
 }
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Press Freedom Tracker API',
     'DESCRIPTION': 'Programmatic access to up-to-date data.',
-    'VERSION': '1.0.0',
+    'VERSION': '',
     'SERVE_URLCONF': 'incident.api.urls',
 }
