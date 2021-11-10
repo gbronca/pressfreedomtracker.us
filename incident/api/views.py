@@ -1,6 +1,9 @@
 import collections
 from typing import TYPE_CHECKING
 
+from drf_spectacular.utils import (
+    extend_schema,
+)
 from rest_framework import viewsets
 from rest_framework.settings import api_settings
 from rest_framework.pagination import CursorPagination
@@ -17,7 +20,7 @@ from incident.api.serializers import (
     FlatIncidentSerializer,
 )
 from incident import models
-from incident.utils.incident_filter import IncidentFilter
+from incident.utils.incident_filter import IncidentFilter, get_openapi_parameters
 
 if TYPE_CHECKING:
     from django.http import HttpResponse
@@ -70,6 +73,12 @@ class IncidentViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = IncidentSerializer
     renderer_classes = tuple(api_settings.DEFAULT_RENDERER_CLASSES) + (PaginatedCSVRenderer,)
     pagination_class = IncidentCursorPagination
+
+    @extend_schema(
+        parameters=get_openapi_parameters()
+    )
+    def list(self, *args, **kwargs):
+        return super().list(*args, **kwargs)
 
     def dispatch(self, *args, **kwargs) -> 'HttpResponse':
         response = super().dispatch(*args, **kwargs)
